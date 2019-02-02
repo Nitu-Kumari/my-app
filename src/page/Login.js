@@ -8,6 +8,8 @@ import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import { Form, Field } from "react-final-form";
+import { Redirect } from "react-router-dom";
+import Cookies from "universal-cookie";
 import Typography from "@material-ui/core/Typography";
 import Link from "@material-ui/core/Link";
 
@@ -67,14 +69,32 @@ class Login extends React.Component {
     });
 
 
+    const user = await response.json();
+    if (!user) {
+      // error case
+      this.setState({ error: true });
+    } else {
+      // drop cookie for session management
+      const cookies = new Cookies();
+      cookies.set("username", values.username, { path: "/" });
+      // redirect
+      this.setState({ redirect: true });
+    }
 
-  
+
   };
   required = value => (value ? undefined : "*");
   render() {
     const { classes } = this.props;
-
-    
+    if (this.state.redirect) {
+      return (
+        <Redirect
+          to={{
+            pathname: "/search"
+          }}
+        />
+      );
+    }
     return (
       <Form
         onSubmit={this.onSubmit}
@@ -89,7 +109,7 @@ class Login extends React.Component {
                       color="inherit"
                       noWrap
                     >
-                      Welcome Login Page.
+                      Welcome to Login page.
                     </Typography>
                     {this.state.error && (
                       <Typography className={classes.error} noWrap>
@@ -137,7 +157,16 @@ class Login extends React.Component {
                     >
                       Login
                     </Button>
-                    
+                    <br />
+                    <br />
+                    {/* Do not have account?
+                    <Link
+                      href="/registration"
+                      color="blue"
+                      className={classes.link}
+                    >
+                      Click here to register
+                    </Link> */}
                   </Grid>
                 </Grid>
               </Paper>

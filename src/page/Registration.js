@@ -115,6 +115,7 @@ class Registration extends React.Component {
                       )}
                     </Field>
 
+
                     <Field name="email" validate={this.required}>
                       {({ input, meta }) => (
                         <div>
