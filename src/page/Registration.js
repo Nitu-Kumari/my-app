@@ -55,7 +55,7 @@ class Registration extends React.Component {
 
   onSubmit = async values => {
     //make api call
-    const response = await fetch(`http://localhost:5000/users`, {
+    const response = await fetch(`http://localhost:6000/users`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -158,11 +158,11 @@ class Registration extends React.Component {
                     >
                       Registration
                     </Button>
-                    {/* <br/><br/>
+                    <br/><br/>
                     Already have account?
                     <Link href="/login" color="blue" className={classes.link}>
                       Click here to login
-                    </Link> */}
+                    </Link>
                   </Grid>
                 </Grid>
               </Paper>

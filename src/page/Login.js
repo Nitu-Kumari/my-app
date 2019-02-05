@@ -60,7 +60,7 @@ class Login extends React.Component {
   onSubmit = async values => {
     console.log("user ", values);
     //make api call
-    const response = await fetch(`http://localhost:5000/auth`, {
+    const response = await fetch(`http://localhost:6000/auth`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -159,14 +159,14 @@ class Login extends React.Component {
                     </Button>
                     <br />
                     <br />
-                    {/* Do not have account?
+                    Do not have account?
                     <Link
                       href="/registration"
                       color="blue"
                       className={classes.link}
                     >
                       Click here to register
-                    </Link> */}
+                    </Link>
                   </Grid>
                 </Grid>
               </Paper>

@@ -14,7 +14,7 @@ class PrivateRoute extends React.Component {
     const username = cookies.get("username");
 
     //make api call
-    const response = await fetch(`http://localhost:5000/users/${username}`, {
+    const response = await fetch(`http://localhost:6000/users/${username}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json"
