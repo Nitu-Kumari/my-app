@@ -99,7 +99,7 @@ class Header extends React.Component {
     const username = cookies.get("username");
 
     //make api call
-    const response = await fetch(`http://localhost:6000/users/${username}`, {
+    const response = await fetch(`https://secure-ridge-12960.herokuapp.com/users/${username}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json"
